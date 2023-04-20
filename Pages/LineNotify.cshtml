@@ -1,0 +1,27 @@
+﻿@page
+@model OAuth2._0_Practice_0415.Pages.LineNotifyModel
+@{
+}
+
+<section>
+	
+	@if (Model.UserInfo != null)
+	{
+		if (string.IsNullOrEmpty(Model.UserInfo.ReferenceId))
+		{
+			<a class="btn btn-primary" href="@Model.NotifyUrl">訂閱 LINE Notify 通知</a>
+		}
+		else
+		{
+			<form method="post">
+				<input class="form-control" name="message" autocomplete="off" /><br />
+				<button class="btn btn-success " asp-page-handler="SendNotify">發送通知給自己</button><br /><br />
+				<button class="btn btn-warning" asp-page-handler="SendAll">發送通知給所有人</button><br /><br />
+				<button class="btn btn-danger" asp-page-handler="Unregister">取消 LINE Notify 通知</button>
+			</form>
+		}
+	}
+</section>
+<br />
+<br />
+<a class="btn btn-link" href="/Logout">登出</a>
